@@ -110,3 +110,40 @@ form button:hover {
     opacity: 100;
     transform: scale(1);   
 }
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    border: none;
+    color: #0082c8;
+    width: 160px;
+    padding: 10px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.select {
+    margin: 18px;
+    position: relative;
+    overflow: hidden;
+}
+
+.select::after {
+    content: "\25BC";
+    color: white;
+    background-color:#00a6ff;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.select:hover:after {
+    background-color: white;
+    color: #00a6ff;
+
+}
