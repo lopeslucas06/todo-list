@@ -5,6 +5,7 @@ const todoList = document.querySelector('.todo-list');
 
 //Eventos
 todoButton.addEventListener('click', addTodo);
+todoList.addEventListener('click', completeRemove);
 
 //Funções
 
@@ -13,7 +14,7 @@ function addTodo(event) {
     event.preventDefault();
     //TODO DIV
     const todoDiv = document.createElement('div');
-    todoDiv.classList.add('todo');
+    todoDiv.classList.add('todo');    
     //Criar Li
     const novoTodo = document.createElement('li');
     novoTodo.innerText = todoInput.value;
@@ -33,4 +34,21 @@ function addTodo(event) {
     todoList.appendChild(todoDiv);
     //Limpar Value do Input    
     todoInput.value = '';
+}
+
+function completeRemove(e) {
+    const item = e.target;
+    if(item.classList[0] === 'remove-btn') {
+        const todo = item.parentElement;
+        //Animação
+        todo.classList.add('remove');
+        todo.addEventListener('transitionend', function(){
+            todo.remove();
+        })
+    }    
+
+    if(item.classList[0] === 'complete-btn'){
+        const todo = item.parentElement;
+        todo.classList.toggle('completed');
+    }
 }
